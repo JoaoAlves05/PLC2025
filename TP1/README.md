@@ -13,5 +13,5 @@ A análise levou à construção de uma expressão regular que aceita:
 - Cadeias completas, garantindo que a sequência `011` não ocorre.  
 
 ## Lista de Resultados
-- [Solução TP1](./TP1/solucao1.txt)
+- [Solução TP1](./solucao1.txt)
 
