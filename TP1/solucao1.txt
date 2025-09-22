@@ -11,4 +11,9 @@ Explicação:
 - (0|01)* permite zeros isolados ou zeros seguidos de um único 1, evitando a formação da sequência "011".
 - 0* aceita zeros finais opcionais.
 
-Assim, a substring "011" nunca aparece nas cadeias aceites pela expressão.
+Assim, a substring "011" nunca aparece nas strings aceites pela expressão.
+
+
+
+
+
