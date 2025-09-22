@@ -10,10 +10,10 @@ Este repositório contém os trabalhos práticos da cadeira de **Processamento d
 
 ## Lista de Resultados
 - [TP1 - Expressão Regular sem "011"](./TP1/solucao1.txt)
-- [TP2 - ...](./TP2/...)
-- [TP3 - ...](./TP3/...)
-- [TP4 - ...](./TP4/...)
-- [TP5 - ...](./TP5/...)
-- [TP6 - ...](./TP6/...)
-- [TP7 - ...](./TP7/...)
-- [TP8 - ...](./TP8/...)
+- [TP2 - ...](./TP2/)
+- [TP3 - ...](./TP3/)
+- [TP4 - ...](./TP4/)
+- [TP5 - ...](./TP5/)
+- [TP6 - ...](./TP6/)
+- [TP7 - ...](./TP7/)
+- [TP8 - ...](./TP8/)
