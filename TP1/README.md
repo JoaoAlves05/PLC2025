@@ -16,7 +16,7 @@
 **João Alves**  
 **ID:** A108653
 
-<img src="../me.jpg" width="100" height="133" alt="Foto de João Alves" style="border-radius: 8px;">
+<img src="../me.jpg" width="132" height="176" alt="Foto de João Alves" style="border-radius: 8px;">
 
 </div>
 ## 📋 Resumo
