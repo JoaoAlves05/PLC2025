@@ -27,7 +27,7 @@ Neste trabalho foi pedido especificar uma expressão regular que reconheça toda
 A análise levou à construção de uma expressão regular que aceita:
 - Strings formadas apenas por `1`s
 - Strings onde zeros podem aparecer, mas nunca seguidos de dois `1`s
-- Cadeias completas, garantindo que a sequência `011` não ocorre
+- Strings binárias, garantindo que a substring `011` não ocorre
 
 ## 📂 Lista de Resultados
 
