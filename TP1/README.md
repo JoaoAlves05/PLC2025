@@ -19,6 +19,7 @@
 <img src="../me.jpg" width="132" height="176" alt="Foto de João Alves" style="border-radius: 8px;">
 
 </div>
+
 ## 📋 Resumo
 
 Neste trabalho foi pedido especificar uma expressão regular que reconheça todas as strings binárias que **não contenham a substring `011`**.
