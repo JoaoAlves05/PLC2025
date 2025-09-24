@@ -21,7 +21,7 @@
 
 ## 📖 Sobre
 
-Repositório dedicado aos trabalhos práticos da unidade curricular **Processamento de Linguagens e Compiladores (PLC)**, ano letivo 2024/2025.
+Repositório dedicado aos trabalhos práticos da unidade curricular **Processamento de Linguagens e Compiladores (PLC)**, ano letivo 2025/2026.
 
 ---
 
