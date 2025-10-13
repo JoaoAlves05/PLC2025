@@ -30,7 +30,7 @@ Repositório dedicado aos trabalhos práticos da unidade curricular **Processame
 | Trabalho | Descrição | Link |
 |:---:|:---|:---:|
 | **TP1** | Expressão Regular sem "011" | [🔗 Ver Solução](./TP1/solucao1.txt) |
-| **TP2** | *A definir...* | [🔗 Ver Solução](./TP2/) |
+| **TP2** | Conversor de Markdown para HTML | [🔗 Ver Solução](./TP2/tp2.ipynb) |
 | **TP3** | *A definir...* | [🔗 Ver Solução](./TP3/) |
 | **TP4** | *A definir...* | [🔗 Ver Solução](./TP4/) |
 | **TP5** | *A definir...* | [🔗 Ver Solução](./TP5/) |

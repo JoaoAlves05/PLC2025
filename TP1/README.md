@@ -33,7 +33,7 @@ A análise levou à construção de uma expressão regular que aceita:
 
 | Item | Descrição | Link |
 |:---:|:---|:---:|
-| **📄 Solução** | Expressão Regular sem "011" | [🔗 Ver Solução](./solucao1.txt) |
+| **📄 Solução** | Expressão Regular sem "011" | [🔗 Ver Solução](./tp2.ipynb) |
 
 ---
 
