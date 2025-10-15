@@ -28,11 +28,8 @@ O programa lê o conteúdo em Markdown, a partir do stdin, e converte-o para HTM
 * **Negrito:** `**texto**`
 * **Itálico:** `*texto*`
 * **Listas numeradas:**
-
-  ```
-  1. Item 1
-  2. Item 2
-  ```
+  1. Computador
+  2. Mochila
 * **Links:** `[texto](url)`
 * **Imagens:** `![texto alternativo](url)`
 
@@ -40,7 +37,8 @@ O programa lê o conteúdo em Markdown, a partir do stdin, e converte-o para HTM
 
 | Item | Descrição | Link |
 |:---:|:---|:---:|
-| **📄 Solução** | Conversor de Markdown para HTML | [🔗 Ver Solução](./tp2.ipynb) |
+| **📄 Input** | Conteúdo de input em Markdown | [🔗 Ver ficheiro](./input.txt) |
+| **📄 Solução** | Conversor de Markdown para HTML | [🔗 Ver Solução](./tp2.py) |
 
 ---
 
