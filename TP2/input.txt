@@ -1,0 +1,8 @@
+# Exemplo
+Este é um **texto** em *itálico* e um [link](http://exemplo.com)
+
+1. Item 1
+2. Item 2
+3. Item 3
+
+![google](http://www.google.com)
