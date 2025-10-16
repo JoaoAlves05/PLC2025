@@ -30,8 +30,8 @@ Repositório dedicado aos trabalhos práticos da unidade curricular **Processame
 | Trabalho | Descrição | Link |
 |:---:|:---|:---:|
 | **TP1** | Expressão Regular sem "011" | [🔗 Ver Solução](./TP1/solucao1.txt) |
-| **TP2** | Conversor de Markdown para HTML | [🔗 Ver Solução](./TP2/tp2.ipynb) |
-| **TP3** | *A definir...* | [🔗 Ver Solução](./TP3/) |
+| **TP2** | Conversor de Markdown para HTML | [🔗 Ver Solução](./TP2/tp2.py) |
+| **TP3** | Analisador Léxico do SPARQL | [🔗 Ver Solução](./TP3/tp3.py) |
 | **TP4** | *A definir...* | [🔗 Ver Solução](./TP4/) |
 | **TP5** | *A definir...* | [🔗 Ver Solução](./TP5/) |
 | **TP6** | *A definir...* | [🔗 Ver Solução](./TP6/) |
