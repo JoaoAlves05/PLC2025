@@ -30,7 +30,7 @@ O lexer reconhece os principais elementos da linguagem, incluindo:
 - Palavras-chave reservadas (`SELECT`, `WHERE`, `LIMIT`, `a`)  
 - Símbolos (`{`, `}`, `.`)  
 
-O programa lê a query **diretamente do stdin**, permitindo executar, por exemplo:
+O programa lê a query **diretamente do stdin**, permitindo correr, por exemplo:
 
 ```bash
 cat query.txt | python3 tp3.py

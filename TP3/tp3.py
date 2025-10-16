@@ -18,7 +18,6 @@ tokens = [
 ]
 
 # Expressões regulares
-
 t_BRACE_OPEN    = r'\{' # Chaveta de abertura
 t_BRACE_CLOSE   = r'\}' # Chave de fechamento
 t_DOT           = r'\.' # Ponto
