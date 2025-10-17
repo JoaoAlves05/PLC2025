@@ -1,4 +1,4 @@
-# PLC2025 - TP2
+# PLC2025 - TP2 (Conversor de Markdown para HTML)
 
 <div align="center">
 

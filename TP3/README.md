@@ -1,4 +1,4 @@
-# PLC2025 - TP3
+# PLC2025 - TP3 (Analisador Léxico)
 
 <div align="center">
 
