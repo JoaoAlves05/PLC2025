@@ -2,6 +2,7 @@ import ply.lex as lex
 import json
 import os
 from datetime import datetime
+import re
 
 # ---------- TOKENS ----------
 tokens = (
@@ -94,20 +95,29 @@ lexer = lex.lex()
 # ---------- CLASSE DA VENDING MACHINE ----------
 class VendingMachine:
     def __init__(self, stock_file="stock.json", admin_code="1234"):
-        self.stock_file = stock_file
-        self.saldo = 0.0
-        self.stock = self.carregar_stock()
-        self.moedas_validas = {"1e":1.0, "50c":0.5, "20c":0.2, "10c":0.1, "5c":0.05, "2c":0.02, "1c":0.01}
-        self.admin_code = admin_code
-        self.admin = False
+        self.stock_file = stock_file # Ficheiro de stock
+        self.saldo = 0.0 # Saldo inicial
+        self.stock = self.carregar_stock() # Carregar stock do ficheiro
+        self.moedas_validas = {
+            "2e":2.0,
+            "1e":1.0,
+            "50c":0.5,
+            "20c":0.2,
+            "10c":0.1, 
+            "5c":0.05, 
+            "2c":0.02, 
+            "1c":0.01
+            }
+        self.admin_code = admin_code # Código de administrador
+        self.admin = False # Modo administrador desativado
 
     def carregar_stock(self):
-        if os.path.exists(self.stock_file):
+        if os.path.exists(self.stock_file): # Verifica se o ficheiro existe
             try:
-                with open(self.stock_file, "r", encoding="utf-8") as f:
-                    stock = json.load(f)
-                stock.sort(key=lambda x: x["cod"])
-                hoje = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                with open(self.stock_file, "r", encoding="utf-8") as f: # Abre o ficheiro
+                    stock = json.load(f) # Carrega o stock
+                stock.sort(key=lambda x: x["cod"]) # ordena o stock pelo código
+                hoje = datetime.now().strftime("%Y-%m-%d %H:%M:%S") # Data e hora atual
                 print(f"maq: {hoje}, Stock carregado, Estado atualizado.")
                 return stock
             except Exception as e:
@@ -119,21 +129,21 @@ class VendingMachine:
 
     def gravar_stock(self):
         try:
-            self.stock.sort(key=lambda x: x["cod"])
-            with open(self.stock_file, "w", encoding="utf-8") as f:
-                json.dump(self.stock, f, indent=4, ensure_ascii=False)
+            self.stock.sort(key=lambda x: x["cod"]) # ordena o stock pelo código
+            with open(self.stock_file, "w", encoding="utf-8") as f: # Abre o ficheiro
+                json.dump(self.stock, f, indent=4, ensure_ascii=False) # Grava o stock
         except Exception as e:
             print(f"maq: Erro ao gravar stock: {e}")
 
     def formatar_saldo(self, valor):
-        euros = int(valor)
-        centimos = round((valor - euros) * 100)
-        if euros > 0 and centimos > 0:
-            return f"{euros}e{centimos}c"
-        elif euros > 0:
-            return f"{euros}e"
+        euros = int(valor) # Parte inteira do valor que são os euros
+        centimos = round((valor - euros) * 100) # Parte decimal do valor que são os centimos
+        if euros > 0 and centimos > 0: # Se houver euros e centimos
+            return f"{euros}e{centimos}c" # Formata o saldo
+        elif euros > 0: # Se houver apenas euros
+            return f"{euros}e" # Formata o saldo para euros
         else:
-            return f"{centimos}c"
+            return f"{centimos}c" # Formata o saldo para centimos
 
     def listar(self):
         print("maq:")
@@ -146,10 +156,9 @@ class VendingMachine:
 
     def processar_moedas(self, texto_moedas):
         """Processa diretamente o texto das moedas para ser mais flexível"""
-        import re
-        
+                
         # Encontrar todas as moedas no texto usando regex
-        moedas_encontradas = re.findall(r'(\d+[eEcC])', texto_moedas)
+        moedas_encontradas = re.findall(r'(\d+[eEcC])', texto_moedas) # Encontra todas as moedas no texto (expressões com valor e que acabem em e, E, c ou C)
         
         if not moedas_encontradas:
             print("maq: Por favor especifique moedas (ex: MOEDA 1e 50c 20c 5c)")
@@ -157,11 +166,11 @@ class VendingMachine:
             
         total_inserido = 0
         for moeda in moedas_encontradas:
-            moeda = moeda.lower()
+            moeda = moeda.lower() # Converte para minúsculas para facilitar a comparação
             if moeda in self.moedas_validas:
-                valor = self.moedas_validas[moeda]
-                self.saldo += valor
-                total_inserido += valor
+                valor = self.moedas_validas[moeda] # Obtém o valor da moeda
+                self.saldo += valor # Atualiza o saldo
+                total_inserido += valor # Atualiza o total inserido
                 print(f"maq: Inseriu {moeda} ({valor:.2f}€)")
             else:
                 print(f"maq: Moeda inválida: {moeda}")
@@ -170,20 +179,20 @@ class VendingMachine:
         print(f"maq: Saldo atual = {self.formatar_saldo(self.saldo)}")
 
     def selecionar_produto(self, codigo):
-        for produto in self.stock:
-            if produto["cod"] == codigo:
-                if produto["quant"] <= 0:
+        for produto in self.stock: # Percorre o stock
+            if produto["cod"] == codigo: # Verifica se o código existe
+                if produto["quant"] <= 0: # Verifica se o produto está esgotado
                     print(f"maq: Produto '{produto['nome']}' esgotado.")
                     return
                 
-                if self.saldo >= produto["preco"]:
-                    produto["quant"] -= 1
-                    self.saldo -= produto["preco"]
-                    self.gravar_stock()
+                if self.saldo >= produto["preco"]: # Verifica se o saldo é suficiente
+                    produto["quant"] -= 1 # Atualiza o stock
+                    self.saldo -= produto["preco"] # Atualiza o saldo
+                    self.gravar_stock() # Grava o stock atualizado
                     print(f"maq: Pode retirar o produto dispensado \"{produto['nome']}\"")
                     print(f"maq: Saldo restante = {self.formatar_saldo(self.saldo)}")
                 else:
-                    falta = produto["preco"] - self.saldo
+                    falta = produto["preco"] - self.saldo # Calcula o valor que falta
                     print(f"maq: Saldo insuficiente para satisfazer o seu pedido")
                     print(f"maq: Saldo = {self.formatar_saldo(self.saldo)}; Pedido = {self.formatar_saldo(produto['preco'])}; Falta = {self.formatar_saldo(falta)}")
                 return
@@ -191,21 +200,21 @@ class VendingMachine:
         print("maq: Código inválido.")
 
     def devolver_troco(self):
-        if self.saldo <= 0:
+        if self.saldo <= 0: # Se não houver saldo
             print("maq: Sem troco.")
             return
             
-        saldo_restante = self.saldo
+        saldo_restante = self.saldo # Saldo a devolver
         troco = []
         
         # Ordenar moedas por valor descendente
         moedas_ordenadas = sorted(self.moedas_validas.items(), key=lambda x: x[1], reverse=True)
         
-        for moeda_str, valor in moedas_ordenadas:
-            count = int(saldo_restante // valor)
-            if count > 0:
-                troco.append(f"{count}x {moeda_str}")
-                saldo_restante = round(saldo_restante - count * valor, 2)
+        for moeda_str, valor in moedas_ordenadas: # Percorre as moedas
+            count = int(saldo_restante // valor) # Calcula quantas moedas deste valor são necessárias
+            if count > 0: # Se for necessário devolver alguma moeda deste valor
+                troco.append(f"{count}x {moeda_str}") # Adiciona ao troco
+                saldo_restante = round(saldo_restante - count * valor, 2) # Atualiza o saldo restante arredondando
         
         if troco:
             print(f"maq: Pode retirar o troco: {', '.join(troco)}.")
@@ -218,11 +227,11 @@ class VendingMachine:
         print(f"maq: Saldo = {self.formatar_saldo(self.saldo)}")
 
     def mostrar_status(self):
-        if not self.admin:
+        if not self.admin: # Apenas admin pode ver o status
             print("maq: Comando restrito a administrador.")
             return
             
-        produtos_baixos = [p for p in self.stock if p["quant"] <= 2]
+        produtos_baixos = [p for p in self.stock if p["quant"] <= 2] # Produtos com stock baixo (2 ou menos)
         if produtos_baixos:
             print("maq: Produtos com stock baixo:")
             for produto in produtos_baixos:
@@ -232,14 +241,14 @@ class VendingMachine:
 
     def ativar_admin(self):
         codigo = input("maq: Insira código de administrador: ")
-        if codigo == self.admin_code:
-            self.admin = True
+        if codigo == self.admin_code:  # Verifica o código
+            self.admin = True # Ativa o modo admin
             print("maq: Modo administrador ativado.")
         else:
             print("maq: Código incorreto.")
 
     def desativar_admin(self):
-        if not self.admin:
+        if not self.admin: # Se já não for admin
             print("maq: Já se encontra no modo cliente.")
             return
         self.admin = False
@@ -252,25 +261,25 @@ class VendingMachine:
             return
             
         # Juntar todos os tokens para processar o nome do produto
-        args = [t.value for t in tokens]
-        if len(args) < 4:
+        args = [t.value for t in tokens] # Extrai os valores dos tokens
+        if len(args) < 4: # Verifica se há argumentos suficientes( pelo menos código, nome, quantidade, preço)
             print("maq: Uso: ADICIONAR <codigo> <nome> <quantidade> <preco>")
             return
             
-        codigo = args[0]
+        codigo = args[0] # Código do produto
         # O nome do produto pode ter múltiplas palavras
-        nome_parts = args[1:-2]
-        nome = ' '.join(nome_parts)
-        quantidade = int(args[-2])
-        preco = float(args[-1])
+        nome_parts = args[1:-2] # Todas as partes do nome exceto o código, quantidade e preço
+        nome = ' '.join(nome_parts) # Junta as partes do nome
+        quantidade = int(args[-2]) # Quantidade do produto
+        preco = float(args[-1]) # Preço do produto
         
         # Verificar se produto já existe
         for produto in self.stock:
-            if produto["cod"] == codigo:
-                produto["quant"] += quantidade
-                produto["preco"] = preco
+            if produto["cod"] == codigo: # Se o código já existe
+                produto["quant"] += quantidade # Atualiza a quantidade
+                produto["preco"] = preco # Atualiza o preço
                 print(f"maq: Produto '{nome}' atualizado. Quantidade: {produto['quant']}")
-                self.gravar_stock()
+                self.gravar_stock() # Grava o stock atualizado
                 return
                 
         # Adicionar novo produto
@@ -280,9 +289,9 @@ class VendingMachine:
             "quant": quantidade,
             "preco": preco
         }
-        self.stock.append(novo_produto)
+        self.stock.append(novo_produto) # Adiciona o novo produto ao stock
         print(f"maq: Produto '{nome}' adicionado com sucesso.")
-        self.gravar_stock()
+        self.gravar_stock() # Grava o stock atualizado com o novo produto
 
     def remover_produto(self, codigo):
         """Remove um produto do stock (apenas admin)"""
@@ -319,8 +328,8 @@ class VendingMachine:
             print("maq: Uso: ALTERAR_PRECO <codigo> <novo_preco>")
             return
             
-        codigo = tokens[0].value
-        novo_preco = float(tokens[1].value)
+        codigo = tokens[0].value # Código do produto
+        novo_preco = float(tokens[1].value) # Novo preço do produto como float para uniformidade
         
         for produto in self.stock:
             if produto["cod"] == codigo:
@@ -360,24 +369,24 @@ Exemplos:
     def processar_comando(self, comando):
         """Processa um comando completo"""
         try:
-            lexer.input(comando)
-            tokens = list(lexer)
+            lexer.input(comando) # Dá input ao lexer
+            tokens = list(lexer) # Obtém todos os tokens
             if not tokens:
                 print("maq: Comando não reconhecido.")
                 return
-            comando_principal = tokens[0]
+            comando_principal = tokens[0] # Primeiro token é o comando principal
             if comando_principal.type == 'LISTAR':
-                self.listar()
+                self.listar() # Lista todos os produtos
             elif comando_principal.type == 'MOEDA':
                 # Extrair a parte das moedas do comando completo
-                partes = comando.split(' ', 1)
-                if len(partes) > 1:
+                partes = comando.split(' ', 1) # Divide em "MOEDA" e o resto
+                if len(partes) > 1: # Se houver parte das moedas
                     texto_moedas = partes[1]
                     self.processar_moedas(texto_moedas)
                 else:
                     print("maq: Por favor especifique moedas (ex: MOEDA 1e 50c 20c 5c)")
-            elif comando_principal.type == 'SELECIONAR':
-                if len(tokens) > 1 and tokens[1].type == 'CODIGO':
+            elif comando_principal.type == 'SELECIONAR': # Se escolher o comando SELECIONAR
+                if len(tokens) > 1 and tokens[1].type == 'CODIGO': # Verifica se há um código válido
                     self.selecionar_produto(tokens[1].value)
                 else:
                     print("maq: Uso: SELECIONAR <codigo> (ex: SELECIONAR A23)")
@@ -408,7 +417,7 @@ Exemplos:
                 return True               
             else:
                 print("maq: Comando não reconhecido. Digite HELP para ajuda.")         
-        except Exception as e:
+        except Exception as e: # Captura erros inesperados
             print(f"maq: Erro ao processar comando: {e}")  
         return False
 
@@ -418,23 +427,22 @@ Exemplos:
         
         while True:
             try:
-                comando = input(">> ").strip()
+                comando = input(">> ").strip() # Lê o comando do utilizador
                 if not comando:
                     continue
-                # Converter para maiúsculas para comandos
-                comando_upper = comando.upper()
-                if self.processar_comando(comando_upper):
+                comando_upper = comando.upper() # Converter para maiúsculas para comandos
+                if self.processar_comando(comando_upper): # Processa o comando
                     print("maq: Até à próxima!")
                     break       
-            except KeyboardInterrupt:
+            except KeyboardInterrupt: # Captura Ctrl+C
                 print("\nmaq: A desligar...")
-                self.devolver_troco()
+                self.devolver_troco() # Devolve o troco ao desligar
                 break
-            except EOFError:
+            except EOFError: # Captura Ctrl+D
                 print("\nmaq: A desligar...")
-                self.devolver_troco()
+                self.devolver_troco() # Devolve o troco ao desligar
                 break
 
-if __name__ == "__main__":
-    maquina = VendingMachine()
-    maquina.run()
+if __name__ == "__main__": # Executa apenas se for o ficheiro principal
+    maquina = VendingMachine() # Cria a instância da máquina
+    maquina.run() # Executa a máquina
