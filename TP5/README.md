@@ -1,4 +1,4 @@
-# PLC2025 - TP5 (Analisador Recursivo-Descendente de Expressões)
+# PLC2025 - TP5 - Analisador Recursivo-Descendente de Expressões Aritméticas
 
 <div align="center">
 

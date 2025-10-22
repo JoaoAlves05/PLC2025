@@ -33,14 +33,14 @@ Repositório dedicado aos trabalhos práticos da unidade curricular **Processame
 | **TP2** | Conversor de Markdown para HTML | [🔗 Ver Solução](./TP2/tp2.py) |
 | **TP3** | Analisador Léxico do SPARQL | [🔗 Ver Solução](./TP3/tp3.py) |
 | **TP4** | Máquina de Vending | [🔗 Ver Solução](./TP4/maq_vending.py) |
-| **TP5** | *A definir...* | [🔗 Ver Solução](./TP5/) |
+| **TP5** | Analisador Recursivo-Descendente de Expressões Aritméticas | [🔗 Ver Solução](./TP5/tp5.py) |
 | **TP6** | *A definir...* | [🔗 Ver Solução](./TP6/) |
 | **TP7** | *A definir...* | [🔗 Ver Solução](./TP7/) |
 | **TP8** | *A definir...* | [🔗 Ver Solução](./TP8/) |
 
 ---
 
-<div align="left">
+<div align="center">
 
 *📚 Repositório académico · Universidade do Minho · 2025*
 
