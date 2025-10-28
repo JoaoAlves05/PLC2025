@@ -57,7 +57,7 @@ Fator      → NUM | ( Expressao )
 
 ## Ficheiros de Teste
 
-Foram criados **5 ficheiros** (`input1.txt` a `input5.txt`) com várias expressões:
+Foram criados **5 ficheiros** dentro do diretório [**testes**](./testes) (`input1.txt` a `input5.txt`) com várias expressões:
 
 | Ficheiro     | Descrição                 |
 | ------------ | ------------------------- |
