@@ -1,22 +1,14 @@
 # PLC2025 - TP4 (Máquina de Vending)
 
-<div align="center">
-
 ![Ano Letivo](https://img.shields.io/badge/Ano%20Letivo-2025-green)
 ![UC](https://img.shields.io/badge/UC-PLC-orange)
 
-</div>
-
-### 👤 Autor
-
-<div align="left">
+## 👤 Autor
 
 **João Alves**  
 **ID:** A108653
 
-<img src="../me.jpg" width="132" height="176" alt="Foto de João Alves" style="border-radius: 8px;">
-
-</div>
+[Foto de João Alves]
 
 ## Descrição Geral
 
@@ -49,7 +41,7 @@ O stock de produtos é mantido num ficheiro **[stock.json](./stock.json)**, que 
 
 Para entrar no modo administrador:
 
-```
+```bash
 >> ADMIN
 maq: Insira código de administrador: 1234
 maq: Modo administrador ativado.
@@ -96,7 +88,7 @@ O programa lê e grava automaticamente este ficheiro, garantindo **persistência
 
 Exemplo:
 
-```
+```text
 >> MOEDA 1e 50c 20c 5c
 maq: Inseriu 1e (1.00€)
 maq: Inseriu 50c (0.50€)
@@ -113,7 +105,7 @@ maq: Saldo atual = 1e75c
 O programa usa **PLY** para reconhecer e processar comandos.
 Os tokens definidos são:
 
-```
+```text
 LISTAR, MOEDA, SELECIONAR, SALDO, STATUS,
 ADICIONAR, REMOVER, RESET, ALTERAR_PRECO,
 ADMIN, CLIENT, SAIR, HELP,
@@ -130,7 +122,7 @@ Cada comando é identificado automaticamente através de expressões regulares, 
 
 ## Exemplo de Execução
 
-```
+```text
 maq: Bom dia! Estou disponível para atender o seu pedido.
 maq: Digite HELP para ver os comandos disponíveis.
 
@@ -193,8 +185,4 @@ O ficheiro principal contém:
 
 ---
 
-<div align="center">
-
-*📚 Trabalho Prático 4 · Processamento de Linguagens e Compiladores · 2025*
-
-</div>
+### 📚 Trabalho Prático 4 · Processamento de Linguagens e Compiladores · 2025

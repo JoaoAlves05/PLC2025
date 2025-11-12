@@ -1,23 +1,15 @@
 # PLC2025 · Processamento de Linguagens e Compiladores
 
-<div align="center">
-
-![Universidade](https://img.shields.io/badge/Universidade-UMinho-blue) 
+![Universidade](https://img.shields.io/badge/Universidade-UMinho-blue)
 ![Ano Letivo](https://img.shields.io/badge/Ano%20Letivo-2025-green)
 ![UC](https://img.shields.io/badge/UC-PLC-orange)
 
-</div>
-
 ## 👤 Autor
-
-<div align="left">
 
 **João Alves**  
 **ID:** A108653
 
-<img src="me.jpg" width="132" height="176" alt="Foto de João Alves" style="border-radius: 8px;">
-
-</div>
+![João Alves](./me.jpg)
 
 ## 📖 Sobre
 
@@ -37,8 +29,4 @@ Repositório dedicado aos trabalhos práticos da unidade curricular **Processame
 
 ---
 
-<div align="center">
-
-*📚 Repositório académico · Universidade do Minho · 2025*
-
-</div>
+### 📚 Repositório académico · Universidade do Minho · 2025

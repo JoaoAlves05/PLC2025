@@ -1,22 +1,14 @@
 # PLC2025 - TP2 (Conversor de Markdown para HTML)
 
-<div align="center">
-
 ![Ano Letivo](https://img.shields.io/badge/Ano%20Letivo-2025-green)
 ![UC](https://img.shields.io/badge/UC-PLC-orange)
 
-</div>
-
-### 👤 Autor
-
-<div align="left">
+## 👤 Autor
 
 **João Alves**  
 **ID:** A108653
 
-<img src="../me.jpg" width="132" height="176" alt="Foto de João Alves" style="border-radius: 8px;">
-
-</div>
+[Foto de João Alves]
 
 ## 📋 Resumo
 
@@ -42,8 +34,4 @@ O programa lê o conteúdo em Markdown, a partir do stdin, e converte-o para HTM
 
 ---
 
-<div align="center">
-
-*📚 Trabalho Prático 2 · Processamento de Linguagens e Compiladores · 2025*
-
-</div>
+### 📚 Trabalho Prático 2 · Processamento de Linguagens e Compiladores · 2025

@@ -1,22 +1,14 @@
 # PLC2025 - TP5 - Analisador Recursivo-Descendente de Expressões Aritméticas
 
-<div align="center">
-
 ![Ano Letivo](https://img.shields.io/badge/Ano%20Letivo-2025-green)
 ![UC](https://img.shields.io/badge/UC-PLC-orange)
 
-</div>
+## 👤 Autor
 
-### 👤 Autor
-
-<div align="left">
-
-**João Alves**
+**João Alves**  
 **ID:** A108653
 
-<img src="../me.jpg" width="132" height="176" alt="Foto de João Alves" style="border-radius: 8px;">
-
-</div>
+[Foto de João Alves]
 
 ---
 
@@ -38,6 +30,7 @@ O programa:
   ```bash
   cat testes/input2.txt | python3 tp5.py
   ```
+  
 * Mostra as **derivações** e **reconhecimentos** de cada parte da expressão;
 * Indica quando a expressão está correta ou contém **erros de sintaxe**.
 
@@ -45,7 +38,7 @@ O programa:
 
 ## Gramática Utilizada
 
-```
+```text
 Expressao  → Termo OprSomSub
 OprSomSub  → (+|-) Termo OprSomSub | ε
 Termo      → Fator OprMultDiv
@@ -90,8 +83,4 @@ O ficheiro **`tp5.py`** inclui:
 
 ---
 
-<div align="center">
-
-*📚 Trabalho Prático 5 · Processamento de Linguagens e Compiladores · 2025*
-
-</div>
+### 📚 Trabalho Prático 5 · Processamento de Linguagens e Compiladores · 2025
